@@ -29,14 +29,14 @@ export const App = () => {
     setSortOrder(order);
   };
 
-  const sortAlphabetically = () => {
+  const sortGoodsAlphabetically = () => {
     applySorting(
       [...visibleGoods].sort((good1, good2) => good1.localeCompare(good2)),
       SORT_ALPHABETICALLY,
     );
   };
 
-  const sortByLength = () => {
+  const sortGoodsByLength = () => {
     const sortedGoods = [...goodsFromServer].sort(
       (good1, good2) => good1.length - good2.length,
     );
@@ -44,12 +44,12 @@ export const App = () => {
     applySorting(sortedGoods, SORT_LENGTH);
   };
 
-  const reverse = () => {
+  const reverseGoods = () => {
     setVisibleGoods([...visibleGoods].reverse());
     setIsReversed(!isReversed);
   };
 
-  const reset = () => {
+  const resetGoods = () => {
     setVisibleGoods(goodsFromServer);
     setSortOrder(SORT_ORIGINAL);
     setIsReversed(false);
@@ -61,7 +61,7 @@ export const App = () => {
         <button
           type="button"
           className={`button is-info ${sortOrder === SORT_ALPHABETICALLY ? '' : 'is-light'}`}
-          onClick={sortAlphabetically}
+          onClick={sortGoodsAlphabetically}
         >
           Sort alphabetically
         </button>
@@ -69,7 +69,7 @@ export const App = () => {
         <button
           type="button"
           className={`button is-success ${sortOrder === SORT_LENGTH ? '' : 'is-light'}`}
-          onClick={sortByLength}
+          onClick={sortGoodsByLength}
         >
           Sort by length
         </button>
@@ -77,7 +77,7 @@ export const App = () => {
         <button
           type="button"
           className={`button is-warning ${isReversed ? '' : 'is-light'}`}
-          onClick={reverse}
+          onClick={reverseGoods}
         >
           Reverse
         </button>
@@ -86,7 +86,7 @@ export const App = () => {
           <button
             type="button"
             className="button is-danger is-light"
-            onClick={reset}
+            onClick={resetGoods}
           >
             Reset
           </button>
